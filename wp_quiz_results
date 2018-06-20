@@ -1,0 +1,24 @@
+-- QUIZ RESULTS --
+SELECT * 
+FROM quiz 
+LIMIT 10;
+
+SELECT style, 
+	COUNT(style) as 'count'
+FROM quiz
+GROUP BY 1;
+
+SELECT fit, 
+	COUNT(fit) as 'count'
+FROM quiz
+GROUP BY 1;
+
+SELECT shape, 
+	COUNT(shape) as 'count'
+FROM quiz
+GROUP BY 1;
+
+SELECT color, 
+	COUNT(color) as 'count'
+FROM quiz
+GROUP BY 1;
