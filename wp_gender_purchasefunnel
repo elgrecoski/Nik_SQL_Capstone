@@ -1,0 +1,19 @@
+-- Purchase funnel by quiz gender --
+
+WITH gender_aggregate AS (
+  SELECT DISTINCT q.user_id, 
+		q.style,
+		p.user_id IS NOT NULL AS 'is_purchase'
+	FROM quiz q
+	LEFT JOIN purchase p
+   	ON p.user_id = q.user_id)
+    
+SELECT style,
+	COUNT(DISTINCT CASE
+        WHEN style = "Women's Styles" THEN user_id 
+        WHEN style = "Men's Styles" THEN user_id
+        END) AS 'quiz responses',
+  SUM(is_purchase) AS 'purchaes'
+FROM gender_aggregate
+GROUP BY 1
+ORDER BY 1;
