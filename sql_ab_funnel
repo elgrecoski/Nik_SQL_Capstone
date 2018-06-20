@@ -9,12 +9,12 @@ WITH ab_aggregate AS (
    	ON q.user_id = h.user_id
 	LEFT JOIN purchase p
    	ON p.user_id = q.user_id)
-SELECT number_of_pairs,
-	COUNT(DISTINCT CASE
+SELECT number_of_pairs AS 'test condition',
+  COUNT(DISTINCT CASE
         WHEN number_of_pairs = '5 pairs' THEN user_id 
         WHEN number_of_pairs = '3 pairs' THEN user_id
-        END) AS 'trials',
-  SUM(is_purchase) AS 'conversions'
+        END) AS 'test count',
+  SUM(is_purchase) AS 'purchases'
 FROM ab_aggregate
 WHERE number_of_pairs IS NOT NULL
 GROUP BY 1
