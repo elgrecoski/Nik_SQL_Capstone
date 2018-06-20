@@ -1,3 +1,4 @@
+-- QUIZ funnel --
 SELECT question,
 	COUNT(DISTINCT user_id)
 FROM survey
