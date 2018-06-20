@@ -1,6 +1,6 @@
 -- Purchase funnel by quiz gender --
 
-WITH gender_aggregate AS (
+WITH style_aggregate AS (
   SELECT DISTINCT q.user_id, 
 		q.style,
 		p.user_id IS NOT NULL AS 'is_purchase'
@@ -14,7 +14,7 @@ SELECT style,
         WHEN style = "Men's Styles" THEN user_id
         END) AS 'quiz responses',
   SUM(is_purchase) AS 'purchases'
-FROM gender_aggregate
+FROM style_aggregate
 WHERE style IS NOT "I'm not sure. Let's skip it."
 GROUP BY 1
 ORDER BY 1;
