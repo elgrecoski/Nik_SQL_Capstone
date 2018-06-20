@@ -13,7 +13,8 @@ SELECT style,
         WHEN style = "Women's Styles" THEN user_id 
         WHEN style = "Men's Styles" THEN user_id
         END) AS 'quiz responses',
-  SUM(is_purchase) AS 'purchaes'
+  SUM(is_purchase) AS 'purchases'
 FROM gender_aggregate
+WHERE style IS NOT "I'm not sure. Let's skip it."
 GROUP BY 1
 ORDER BY 1;
